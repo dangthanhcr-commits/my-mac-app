@@ -25,7 +25,7 @@ jobs:
 
     - name: Đóng gói bằng PyInstaller
       run: |
-        pyinstaller --noconfirm --onefile --windowed tkb_lbg_filter_22-9.py
+        pyinstaller --noconfirm --onefile --windowed tkb_lbg_filter_24-10.py
 
     - name: Nén file .app thành .zip
       run: |

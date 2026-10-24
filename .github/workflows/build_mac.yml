@@ -25,15 +25,17 @@ jobs:
 
     - name: Đóng gói bằng PyInstaller
       run: |
-        pyinstaller --noconfirm --onefile --windowed tkb_lbg_filter_24-10.py
+        # Thay "tên_file_cập_nhật.py" thành tên đúng của file Python mới
+        pyinstaller --noconfirm --onefile --windowed tên_file_cập_nhật.py
 
     - name: Nén file .app thành .zip
       run: |
         cd dist
-        zip -r tkb_lbg_filter_22-9.zip tkb_lbg_filter_22-9.app
+        # Dùng *.app để tự động nén ứng dụng vừa đóng gói mà không sợ sai tên
+        zip -r phan_mem_macOS.zip *.app
 
     - name: Tải file phần mềm lên GitHub Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: tkb_lbg_filter_macOS
-        path: dist/tkb_lbg_filter_22-9.zip
+        name: phan_mem_macOS
+        path: dist/phan_mem_macOS.zip

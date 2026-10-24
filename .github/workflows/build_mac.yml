@@ -2,8 +2,12 @@ name: Build macOS App
 
 on:
   push:
-    branches: [ "main", "master" ]  # Tự động chạy khi bạn push code lên branch main hoặc master
-  workflow_dispatch:               # Cho phép nhấn nút chạy thủ công trên GitHub
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+# KHAI BÁO TÊN FILE TẠI ĐÂY (Chỉ cần sửa dòng này cho các lần cập nhật sau)
+env:
+  PYTHON_SCRIPT: "tkb_lbg_filter_24-10.py"
 
 jobs:
   build-macos:
@@ -25,13 +29,13 @@ jobs:
 
     - name: Đóng gói bằng PyInstaller
       run: |
-        # Thay "tên_file_cập_nhật.py" thành tên đúng của file Python mới
-        pyinstaller --noconfirm --onefile --windowed tên_file_cập_nhật.py
+        # Lấy tên file từ biến môi trường đã khai báo ở trên
+        pyinstaller --noconfirm --onefile --windowed ${{ env.PYTHON_SCRIPT }}
 
     - name: Nén file .app thành .zip
       run: |
         cd dist
-        # Dùng *.app để tự động nén ứng dụng vừa đóng gói mà không sợ sai tên
+        # Tự động nén bất kỳ ứng dụng .app nào được tạo ra, không lo sai tên
         zip -r phan_mem_macOS.zip *.app
 
     - name: Tải file phần mềm lên GitHub Artifacts

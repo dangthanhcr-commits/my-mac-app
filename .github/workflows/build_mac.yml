@@ -7,7 +7,7 @@ on:
 
 # KHAI BÁO TÊN FILE TẠI ĐÂY (Chỉ cần sửa dòng này cho các lần cập nhật sau)
 env:
-  PYTHON_SCRIPT: "tkb_lbg_filter_24-10.py"
+  PYTHON_SCRIPT: "tkb_lbg_filter_26-10.py"
 
 jobs:
   build-macos:
